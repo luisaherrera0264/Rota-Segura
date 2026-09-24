@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rota Segura | Editar Perfil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="perfil.css">
+</head>
+<body>
+
+<div class="editar-container">
+
+    <header class="top-bar">
+        <a href="conta.html" class="back-btn" aria-label="Voltar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+        </a>
+        <span class="top-bar-title">Editar Perfil</span>
+        <span class="spacer" aria-hidden="true"></span>
+    </header>
+
+    <div class="avatar-wrap">
+        <span class="avatar">
+            <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/>
+            </svg>
+        </span>
+    </div>
+
+    <form id="formPerfil">
+        <label class="field-box">
+            <span class="field-label">Nome:</span>
+            <input type="text" id="nome" placeholder="Seu nome completo">
+        </label>
+
+        <label class="field-box">
+            <span class="field-label">Email:</span>
+            <input type="email" id="email" placeholder="seuemail@exemplo.com">
+        </label>
+
+        <label class="field-box">
+            <span class="field-label">Senha:</span>
+            <input type="password" id="senha" placeholder="Nova senha (opcional)">
+        </label>
+
+        <button type="submit" class="btn-salvar">Salvar alterações</button>
+        <div id="msgPerfil" class="feedback"></div>
+    </form>
+
+</div>
+
+<script>
+    // Modo demo: usa o último usuário salvo no localStorage (mesmo usado no cadastro)
+    let usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    let indiceAtual = usuarios.length - 1;
+
+    if (indiceAtual >= 0) {
+        document.getElementById('nome').value = usuarios[indiceAtual].nome || '';
+        document.getElementById('email').value = usuarios[indiceAtual].email || '';
+    }
+
+    document.getElementById('formPerfil').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        let nome = document.getElementById('nome').value.trim();
+        let email = document.getElementById('email').value.trim();
+        let senha = document.getElementById('senha').value;
+
+        if (!nome || !email) {
+            document.getElementById('msgPerfil').innerHTML = '<div class="feedback erro">Preencha nome e email!</div>';
+            setTimeout(() => document.getElementById('msgPerfil').innerHTML = '', 2000);
+            return;
+        }
+
+        if (indiceAtual >= 0) {
+            usuarios[indiceAtual].nome = nome;
+            usuarios[indiceAtual].email = email;
+            if (senha) {
+                usuarios[indiceAtual].senha = senha;
+            }
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
+        }
+
+        document.getElementById('msgPerfil').innerHTML = '<div class="feedback sucesso">Perfil atualizado com sucesso!</div>';
+        setTimeout(() => {
+            document.getElementById('msgPerfil').innerHTML = '';
+            window.location.href = 'conta.html';
+        }, 1500);
+    });
+</script>
+
+</body>
+</html>

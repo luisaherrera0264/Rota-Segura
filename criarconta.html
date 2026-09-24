@@ -2,67 +2,90 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Cadastro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rota Segura | Cadastro</title>
+  <link rel="icon" type="image/svg+xml" href="img/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="criarconta.css">
-  
-    
 </head>
 <body>
 
-<div class="container">
+<div class="signup-container">
 
-  <div class="left">
-    <center><h2>CADASTRO</h2></center>
+    <header class="top-bar">
+        <a href="login.html" class="back-btn" aria-label="Voltar para o login">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+        </a>
+        <span class="top-bar-title">Rota Segura</span>
+    </header>
 
-    <select id="tipo" onchange="mudarTipo()">
-      <option value="">Selecione o tipo</option>
-      <option value="responsavel">Responsável</option>
-      <option value="motorista">Motorista</option>
-      <option value="monitor">Monitor</option>
-    </select>
-
-    <input type="text" id="nome" placeholder="Nome completo">
-
-    <!-- Campos específicos por tipo -->
-    <div id="responsavel" class="tipo">
-      <input type="text" id="cpfResp" placeholder="CPF">
-      <input type="date" id="dataResp" placeholder="Data de Nascimento">
-    </div>
-    
-    <div id="motorista" class="tipo">
-      <input type="text" id="cnhMotorista" placeholder="CNH">
-      <input type="date" id="dataMotorista" placeholder="Data de Nascimento">
-    </div>
-    
-    <div id="monitor" class="tipo">
-      <input type="text" id="docMonitor" placeholder="Documento (RG/CPF)">
-      <input type="date" id="dataMonitor" placeholder="Data de Nascimento">
+    <div class="page-title">
+        <h1>Criar nova<br>Conta</h1>
     </div>
 
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="senha" placeholder="Senha">
-    <input type="password" id="confirmarSenha" placeholder="Confirmar Senha">
+    <!-- Seletor de tipo (pills), sincronizado com o <select> original -->
+    <div class="tipo-block">
+        <p class="tipo-label">Cadastrar como?</p>
+        <div class="tipo-selector" role="group" aria-label="Tipo de cadastro">
+            <button type="button" class="tipo-pill" data-tipo="responsavel">Responsável</button>
+            <button type="button" class="tipo-pill" data-tipo="motorista">Motorista</button>
+            <button type="button" class="tipo-pill" data-tipo="monitor">Monitor</button>
+        </div>
+        <select id="tipo" onchange="mudarTipo()" class="visually-hidden">
+            <option value="">Selecione o tipo</option>
+            <option value="responsavel">Responsável</option>
+            <option value="motorista">Motorista</option>
+            <option value="monitor">Monitor</option>
+        </select>
+    </div>
 
-    <button onclick="cadastrar()">Cadastrar</button>
-    <button onclick="voltarLogin()" class="btn-voltar">← Voltar para o Login</button>
+    <!-- Cartão laranja com os campos, igual ao padrão das telas de cadastro do Figma -->
+    <div class="form-card" id="formCard" hidden>
+
+        <input type="text" id="nome" placeholder="Nome completo">
+
+        <!-- Campos específicos por tipo -->
+        <div id="responsavel" class="tipo">
+            <input type="text" id="cpfResp" placeholder="CPF">
+            <input type="date" id="dataResp" placeholder="Data de Nascimento">
+        </div>
+
+        <div id="motorista" class="tipo">
+            <input type="text" id="cnhMotorista" placeholder="CNH">
+            <input type="date" id="dataMotorista" placeholder="Data de Nascimento">
+        </div>
+
+        <div id="monitor" class="tipo">
+            <input type="text" id="docMonitor" placeholder="Documento (RG/CPF)">
+            <input type="date" id="dataMonitor" placeholder="Data de Nascimento">
+        </div>
+
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="senha" placeholder="Senha">
+        <input type="password" id="confirmarSenha" placeholder="Confirmar Senha">
+
+        <button onclick="cadastrar()" class="btn-cadastrar">Cadastrar</button>
+    </div>
+
     <div id="mensagem" class="feedback"></div>
-  </div>
 
-  <div class="right">
-    <img src="img/teste.avif" alt="ilustração">
-  </div>
+    <p class="signin-text">Possui uma conta? <a href="login.html" onclick="voltarLogin(); return false;">Entrar</a></p>
 
 </div>
 
 <script>
 function mudarTipo() {
   let tipo = document.getElementById('tipo').value;
-  
+
   // Esconde todos
   document.getElementById('responsavel').style.display = 'none';
   document.getElementById('motorista').style.display = 'none';
   document.getElementById('monitor').style.display = 'none';
-  
+
   // Mostra o selecionado
   if(tipo === 'responsavel') {
     document.getElementById('responsavel').style.display = 'block';
@@ -83,38 +106,38 @@ function cadastrar() {
   let email = document.getElementById('email').value;
   let senha = document.getElementById('senha').value;
   let confirmar = document.getElementById('confirmarSenha').value;
-  
+
   // Validação básica
   if(!tipo) {
     mostrarMsg('Selecione o tipo de usuário!', 'erro');
     return;
   }
-  
+
   if(!nome) {
     mostrarMsg('Digite o nome completo!', 'erro');
     return;
   }
-  
+
   if(!email) {
     mostrarMsg('Digite o email!', 'erro');
     return;
   }
-  
+
   if(!senha) {
     mostrarMsg('Digite a senha!', 'erro');
     return;
   }
-  
+
   if(senha !== confirmar) {
     mostrarMsg('As senhas não coincidem!', 'erro');
     return;
   }
-  
+
   // Cadastro por tipo
   if(tipo === 'responsavel') {
     let cpf = document.getElementById('cpfResp').value;
     let data = document.getElementById('dataResp').value;
-    
+
     if(!cpf) {
       mostrarMsg('Digite o CPF!', 'erro');
       return;
@@ -127,7 +150,7 @@ function cadastrar() {
       mostrarMsg('CPF inválido!', 'erro');
       return;
     }
-    
+
     // Salvar no localStorage
     let usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
     usuarios.push({
@@ -139,17 +162,17 @@ function cadastrar() {
       senha: senha
     });
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
-    
+
     mostrarMsg('✅ Responsável cadastrado com sucesso!', 'sucesso');
     setTimeout(() => {
       window.location.href = 'login.html';
     }, 2000);
   }
-  
+
   else if(tipo === 'motorista') {
     let cnh = document.getElementById('cnhMotorista').value;
     let data = document.getElementById('dataMotorista').value;
-    
+
     if(!cnh) {
       mostrarMsg('Digite a CNH!', 'erro');
       return;
@@ -162,7 +185,7 @@ function cadastrar() {
       mostrarMsg('CNH inválida!', 'erro');
       return;
     }
-    
+
     let usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
     usuarios.push({
       tipo: 'motorista',
@@ -173,17 +196,17 @@ function cadastrar() {
       senha: senha
     });
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
-    
+
     mostrarMsg('✅ Motorista cadastrado com sucesso!', 'sucesso');
     setTimeout(() => {
       window.location.href = 'login.html';
     }, 2000);
   }
-  
+
   else if(tipo === 'monitor') {
     let doc = document.getElementById('docMonitor').value;
     let data = document.getElementById('dataMonitor').value;
-    
+
     if(!doc) {
       mostrarMsg('Digite o documento!', 'erro');
       return;
@@ -192,7 +215,7 @@ function cadastrar() {
       mostrarMsg('Digite a data de nascimento!', 'erro');
       return;
     }
-    
+
     let usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
     usuarios.push({
       tipo: 'monitor',
@@ -203,7 +226,7 @@ function cadastrar() {
       senha: senha
     });
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
-    
+
     mostrarMsg('✅ Monitor cadastrado com sucesso!', 'sucesso');
     setTimeout(() => {
       window.location.href = 'login.html';
@@ -218,6 +241,28 @@ function mostrarMsg(msg, tipo) {
     div.innerHTML = '';
   }, 3000);
 }
+</script>
+
+<!-- Progressive enhancement: liga os botões de tipo (pills) ao <select> original, sem alterar a lógica acima -->
+<script>
+(function() {
+    var pills = document.querySelectorAll('.tipo-pill');
+    var select = document.getElementById('tipo');
+    var formCard = document.getElementById('formCard');
+
+    pills.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            select.value = btn.dataset.tipo;
+            pills.forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            mudarTipo();
+            formCard.hidden = false;
+            formCard.classList.remove('pop-in');
+            void formCard.offsetWidth; // reinicia a animação a cada troca
+            formCard.classList.add('pop-in');
+        });
+    });
+})();
 </script>
 
 </body>

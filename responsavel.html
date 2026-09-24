@@ -2,25 +2,79 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Rota Segura</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rota Segura - Responsável</title>
+    <link rel="icon" type="image/svg+xml" href="img/logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="responsavel.css">
 </head>
 <body>
 
 <div class="container">
-    <div class="titulo">
-        <h1>🚍 Rota Segura</h1>
-        <p>Presente em cada trajeto</p>
-    </div>
+
+    <header class="dash-header">
+        <div class="dash-header-top">
+            <a href="login.html" class="back-btn" aria-label="Sair para o login">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+            </a>
+            <span class="dash-header-brand"> Rota Segura</span>
+            <a href="conta.html" class="profile-btn" aria-label="Minha conta">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/>
+                </svg>
+            </a>
+        </div>
+
+        <div class="titulo">
+            <h1>Área do Responsável</h1>
+            <p>Presente em cada trajeto</p>
+        </div>
+    </header>
 
     <div class="card">
+
         <div class="menu">
-            <button onclick="mudarTela('cadastro')"> Cadastrar</button>
-            <button onclick="mudarTela('visualizar')"> Visualizar</button>
-            <button onclick="mudarTela('ausencia')"> Notificar Ausência</button>
-            <button onclick="mudarTela('rota')"> Rota</button>
-            <button onclick="mudarTela('notificacoes')"> Notificações</button>
-            <button onclick="sair()" class="btn-sair"> Sair</button>
+            <div class="menu-grid">
+                <button onclick="mudarTela('cadastro')" class="menu-btn" data-tela="cadastro">
+                    <span class="menu-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="8" r="3.2"/><path d="M3 20c0-3.5 3.1-6.2 7-6.2s7 2.7 7 6.2"/><path d="M18 8v5M15.5 10.5h5"/></svg>
+                    </span>
+                    Cadastrar
+                </button>
+                <button onclick="mudarTela('visualizar')" class="menu-btn" data-tela="visualizar">
+                    <span class="menu-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.3 3.1-6 7-6s7 2.7 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.2c2.9.5 5.5 2.5 5.5 5.8"/></svg>
+                    </span>
+                    Visualizar
+                </button>
+                <button onclick="mudarTela('ausencia')" class="menu-btn" data-tela="ausencia">
+                    <span class="menu-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16M9 15l2 2 4-4"/></svg>
+                    </span>
+                    Notificar Ausência
+                </button>
+                <button onclick="mudarTela('rota')" class="menu-btn" data-tela="rota">
+                    <span class="menu-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.4-7-11a7 7 0 0 1 14 0c0 5.6-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+                    </span>
+                    Rota
+                </button>
+                <button onclick="mudarTela('notificacoes')" class="menu-btn" data-tela="notificacoes">
+                    <span class="menu-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 4 1.5 5.5 2 6.5H4c.5-1 2-2.5 2-6.5Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+                    </span>
+                    Notificações
+                </button>
+            </div>
+            <button onclick="sair()" class="btn-sair">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
+                Sair
+            </button>
         </div>
 
         <!-- Tela Cadastro -->
@@ -30,14 +84,24 @@
                 <div class="form-group">
                     <label>Nome:</label>
                     <input type="text" id="nome" placeholder="Insira o nome completo" required>
+                </div>
+                <div class="form-group">
                     <label>Data de Nascimento</label>
                     <input type="date" id="dataNasc">
+                </div>
+                <div class="form-group">
                     <label>Escola</label>
                     <input type="text" id="escola" placeholder="Insira o nome da escola">
+                </div>
+                <div class="form-group">
                     <label>Endereço de Embarque</label>
                     <input type="text" id="embarque" placeholder="Insira o endereço">
+                </div>
+                <div class="form-group">
                     <label>Endereço de Desembarque</label>
                     <input type="text" id="desembarque" placeholder="Insira o endereço">
+                </div>
+                <div class="form-group">
                     <label>Turno</label>
                     <select id="turno">
                         <option>Manhã</option>
@@ -87,21 +151,47 @@
         <div id="telaRota" class="conteudo esconder">
             <h2>Acompanhar Rota</h2>
             <div class="rota-box">
-                
-                <img id="mapaRota" src="mapa.jpg" alt="Mapa da rota em tempo real" style="width: 100%; max-width: 500px; border-radius: 10px; margin-bottom: 15px;">
-                
-                <div style="font-size: 40px;"></div>
-                <p style="margin-top: 15px;"><strong>Status:</strong> Em andamento</p>
-                <p><strong>Próxima parada:</strong> Rua Principal, 123</p>
-                <p><strong>Previsão:</strong> 15 min</p>
-                <button onclick="atualizarRota()" style="margin-top: 15px;">Atualizar Localização</button>
+                <img id="mapaRota" src="img/mapa.jpg" alt="Mapa da rota em tempo real" class="mapa-img">
+
+                <div class="timeline">
+                    <div class="timeline-item done">
+                        <span class="dot"></span>
+                        <div>
+                            <strong>Embarque</strong>
+                            <p>O aluno entrou no transporte escolar.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item active">
+                        <span class="dot"></span>
+                        <div>
+                            <strong>Status: Em andamento</strong>
+                            <p>O veículo está em movimento.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="dot"></span>
+                        <div>
+                            <strong>Próxima parada</strong>
+                            <p>Rua Principal, 123</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="dot"></span>
+                        <div>
+                            <strong>Previsão</strong>
+                            <p>15 min</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="atualizarRota()" class="btn-primary">Atualizar Localização</button>
             </div>
         </div>
 
         <!-- Tela Notificações -->
         <div id="telaNotificacoes" class="conteudo esconder">
             <h2>Notificações</h2>
-            <div id="listaNotif"></div>
+            <div id="listaNotif" class="lista"></div>
             <button onclick="limparNotif()" class="btn-primary" style="margin-top: 10px;">Limpar tudo</button>
         </div>
     </div>
@@ -340,6 +430,17 @@
 };
 
     mudarTela('visualizar');
+</script>
+
+<!-- Progressive enhancement: apenas destaca o botão da aba ativa no menu (não interfere na lógica acima) -->
+<script>
+    document.querySelectorAll('.menu-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.menu-btn').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+        });
+    });
+    document.querySelector('.menu-btn[data-tela="visualizar"]').classList.add('active');
 </script>
 
 </body>
