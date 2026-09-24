@@ -1,47 +1,78 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="pt-BR">
 
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rota Segura | Login</title>
+<link rel="icon" type="image/svg+xml" href="img/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="login.css">
-
-
 </head>
 <body>
 
 <div class="login-container">
+
+    <header class="top-bar">
+        <a href="rotasegura.html" class="back-btn" aria-label="Voltar para o início">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+        </a>
+        <span class="top-bar-title">Rota Segura</span>
+    </header>
+
     <div class="logo">
-        <h1>Rota Segura</h1>
-        <p>Presente em cada trajeto</p>
+        <h1>Entrar</h1>
     </div>
-    
+
     <form id="loginForm">
-        <input type="text" id="usuario" placeholder="Usuário" required>
-        <input type="password" id="senha" placeholder="Senha" required>
+        <div class="field">
+            <input type="text" id="usuario" placeholder="Email" autocomplete="username" required>
+        </div>
+        <div class="field">
+            <input type="password" id="senha" placeholder="Senha" autocomplete="current-password" required>
+        </div>
+
+        <a href="#" class="forgot-link">Esqueci minha senha</a>
+
         <button type="submit">Entrar</button>
     </form>
-    
-    <div class="links">
-        <a href="rotasegura.html">Início</a>
-        <a href="criarconta.html">Criar Conta</a>
 
+    <p class="divider">ou continuar com</p>
+
+    <div class="social-row">
+        <button type="button" class="social-btn" aria-label="Continuar com Google">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <circle cx="12" cy="12" r="9"/>
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 3v6M12 15v6M4.2 7.5l5.2 3M14.6 13.5l5.2 3M19.8 7.5l-5.2 3M9.4 13.5l-5.2 3"/>
+            </svg>
+        </button>
+        <button type="button" class="social-btn" aria-label="Continuar com Apple">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16.365 1.43c0 1.14-.415 2.05-1.245 2.73-.86.7-1.865.99-2.965.9-.14-1.1.32-2.15 1.16-2.83.83-.67 1.87-1.04 3.05-.8zM20.5 17.2c-.35.83-.76 1.6-1.24 2.32-.65.98-1.19 1.66-1.6 2.03-.64.62-1.32.94-2.06.96-.52.02-1.15-.15-1.88-.5-.74-.36-1.42-.53-2.05-.53-.66 0-1.35.17-2.08.53-.74.36-1.34.55-1.8.57-.71.03-1.4-.3-2.08-1-.44-.42-1-1.13-1.68-2.13-.72-1.06-1.32-2.3-1.78-3.7-.5-1.53-.75-3.01-.75-4.44 0-1.63.35-3.04 1.06-4.22.55-.95 1.29-1.7 2.2-2.25.92-.55 1.9-.83 2.98-.85.55 0 1.28.19 2.19.56.9.37 1.48.56 1.74.56.19 0 .84-.22 1.94-.66 1.04-.4 1.92-.57 2.63-.5 1.94.16 3.4.92 4.36 2.3-1.74 1.05-2.6 2.53-2.58 4.42.02 1.48.55 2.71 1.6 3.68.47.44 1 .79 1.58 1.02-.13.36-.26.7-.4 1.04z"/>
+            </svg>
+        </button>
     </div>
+
+    <p class="signup-text">Não possui uma conta? <a href="criarconta.html">Cadastre-se</a></p>
+
 </div>
 
 <script>
 document.getElementById('loginForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
+
     var usuario = document.getElementById('usuario').value;
     var senha = document.getElementById('senha').value;
-    
+
     // Conta de Responsável
     if(usuario === "responsavel" && senha === "123") {
         window.location.href = "responsavel.html";
-    } 
+    }
     // Conta de Motorista
     else if(usuario === "motorista" && senha === "123") {
         window.location.href = "motorista.html";

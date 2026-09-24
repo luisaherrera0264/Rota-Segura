@@ -1,78 +1,296 @@
 <!DOCTYPE html>
-
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
-
-    <meta charset="UTF-8">
-    <title>Rota Segura | Início</title>
-     <link rel="stylesheet" type="text/css" href="rotasegura.css">
-        
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rota Segura | Presente em cada Trajeto</title>
+<link rel="icon" type="image/svg+xml" href="img/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="rotasegura.css">
 </head>
 <body>
 
-    <div class="menu">
-        <div class="logo">Rota Segura</div>
-        <div>
-            <a href="#home">Início</a>
-            <a href="#quem">Quem Somos</a>
-            <a href="#func">Funcionalidades</a>
-            <a href="login.html" class="btn-login">Login</a>
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="hero-bg" aria-hidden="true">        
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="home-container">
+        <header class="top-bar">
+            <div class="brand">
+                <span class="logo-badge">
+                    <img src="img/logo.svg" alt="logo">
+                </span>
+                <span class="brand-name">Rota<br>Segura</span>
+            </div>
+            <a href="login.html" class="enter-link">Entrar</a>
+        </header>
+
+        <main class="hero-text">
+            <h1><span>Presente em cada</span><em>Trajeto!</em></h1>
+        </main>
+
+        <footer class="hero-footer">
+            <p class="cta-text">
+                Não tem uma conta?<br>
+                <a href="criarconta.html">Cadastre-se agora</a>
+            </p>
+            <a href="#sobre" class="scroll-hint" aria-label="Rolar para saber mais">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="7" r="3"/>
+                    <path d="M12 10v8M9 15l3 3 3-3"/>
+                </svg>
+            </a>
+        </footer>
+    </div>
+</section>
+
+<!-- ===== SOBRE ===== -->
+<section id="sobre" class="section section-dark reveal">
+    <span class="eyebrow">Sobre o app</span>
+    <h2>Tecnologia que acompanha cada trajeto até a escola</h2>
+    <p class="section-lead">
+        O Rota Segura conecta responsáveis, motoristas e monitores em um só lugar. Enquanto o veículo
+        está a caminho, quem cuida da criança acompanha tudo pelo celular: localização em tempo real,
+        confirmação de embarque e desembarque, e qualquer imprevisto no caminho.
+    </p>
+</section>
+
+<!-- ===== PARA QUEM É ===== -->
+<section class="section section-light">
+    <span class="eyebrow">Para quem é</span>
+    <h2>Um app, três formas de cuidar do trajeto</h2>
+
+    <div class="perfil-grid">
+
+        <article class="perfil-card reveal">
+            <span class="icon-circle">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 21c4-2.5 7-5.7 7-10V6l-7-3-7 3v5c0 4.3 3 7.5 7 10z"/>
+                    <path d="M9.5 12l1.8 1.8L15 10"/>
+                </svg>
+            </span>
+            <h3>Responsável</h3>
+            <p>Acompanha o trajeto do filho em tempo real e recebe notificação de embarque e desembarque.</p>
+            <ul>
+                <li>Rastreamento ao vivo da rota</li>
+                <li>Notificações automáticas</li>
+                <li>Cadastro de dependentes</li>
+                <li>Histórico de viagens</li>
+            </ul>
+        </article>
+
+        <article class="perfil-card reveal">
+            <span class="icon-circle">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="10" width="14" height="7" rx="1.5"/>
+                    <path d="M17 12h2.4a1 1 0 0 1 .9.55L21.5 15v2H17"/>
+                    <circle cx="7.5" cy="18.5" r="1.6"/>
+                    <circle cx="16.5" cy="18.5" r="1.6"/>
+                </svg>
+            </span>
+            <h3>Motorista</h3>
+            <p>Organiza rotas, confirma embarques e mantém contato direto com a equipe durante o trajeto.</p>
+            <ul>
+                <li>Rotas otimizadas</li>
+                <li>Confirmação de embarque/desembarque</li>
+                <li>Comunicação com a equipe</li>
+                <li>Cadastro de veículos</li>
+            </ul>
+        </article>
+
+        <article class="perfil-card reveal">
+            <span class="icon-circle">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 12.5 11 14.5 15.5 9.5"/>
+                    <circle cx="12" cy="12" r="9"/>
+                </svg>
+            </span>
+            <h3>Monitor</h3>
+            <p>Acompanha os alunos dentro do veículo e reporta qualquer ocorrência em tempo real.</p>
+            <ul>
+                <li>Lista de presença digital</li>
+                <li>Registro de ocorrências</li>
+                <li>Chat com responsáveis</li>
+                <li>Painel da rota do dia</li>
+            </ul>
+        </article>
+
+    </div>
+</section>
+
+<!-- ===== RECURSOS ===== -->
+<section class="section section-dark">
+    <span class="eyebrow">Recursos</span>
+    <h2>Tudo o que o Rota Segura oferece</h2>
+
+    <div class="features-grid">
+
+        <div class="feature-item reveal">
+            <span class="icon-circle icon-circle--dark">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.4-7-11a7 7 0 0 1 14 0c0 5.6-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+            </span>
+            <h4>Rastreamento em tempo real</h4>
+            <p>Veja no mapa exatamente onde o veículo está, a qualquer momento.</p>
+        </div>
+
+        <div class="feature-item reveal">
+            <span class="icon-circle icon-circle--dark">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 4 1.5 5.5 2 6.5H4c.5-1 2-2.5 2-6.5Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+            </span>
+            <h4>Notificações automáticas</h4>
+            <p>Alertas de embarque, desembarque e mudanças de rota, na hora.</p>
+        </div>
+
+        <div class="feature-item reveal">
+            <span class="icon-circle icon-circle--dark">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 13h5"/></svg>
+            </span>
+            <h4>Cadastro de dependentes</h4>
+            <p>Guarde escola, turno e dados de cada criança em um só lugar.</p>
+        </div>
+
+        <div class="feature-item reveal">
+            <span class="icon-circle icon-circle--dark">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            </span>
+            <h4>Histórico de rotas</h4>
+            <p>Consulte viagens e horários anteriores sempre que precisar.</p>
+        </div>
+
+        <div class="feature-item reveal">
+            <span class="icon-circle icon-circle--dark">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a7.5 7.5 0 0 1-11.4 6.4L4 19l1.2-5A7.5 7.5 0 1 1 21 11.5Z"/></svg>
+            </span>
+            <h4>Comunicação direta</h4>
+            <p>Fale com motorista, monitor ou responsável sem sair do app.</p>
+        </div>
+
+        <div class="feature-item reveal">
+            <span class="icon-circle icon-circle--dark">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="14" height="7" rx="1.5"/><path d="M17 12h2.4a1 1 0 0 1 .9.55L21.5 15v2H17"/><circle cx="7.5" cy="18.5" r="1.6"/><circle cx="16.5" cy="18.5" r="1.6"/></svg>
+            </span>
+            <h4>Gestão de veículos</h4>
+            <p>Motoristas cadastram e organizam os veículos usados nas rotas.</p>
+        </div>
+
+        <div class="feature-item reveal">
+            <span class="icon-circle icon-circle--dark">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16M9 15l2 2 4-4"/></svg>
+            </span>
+            <h4>Registro de ausências</h4>
+            <p>Avise a falta do aluno com poucos toques, evitando paradas desnecessárias.</p>
+        </div>
+
+        <div class="feature-item reveal">
+            <span class="icon-circle icon-circle--dark">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20V10M12 20V4M18 20v-7"/></svg>
+            </span>
+            <h4>Relatórios e ocorrências</h4>
+            <p>Tenha um registro de cada viagem, com detalhes de eventuais imprevistos.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== COMO FUNCIONA ===== -->
+<section class="section section-light">
+    <span class="eyebrow">Como funciona</span>
+    <h2>Do cadastro ao desembarque, em poucos passos</h2>
+
+    <div class="steps">
+        <div class="step reveal">
+            <span class="step-number">1</span>
+            <h4>Crie sua conta</h4>
+            <p>Escolha se é responsável, motorista ou monitor e cadastre seus dados.</p>
+        </div>
+        <div class="step reveal">
+            <span class="step-number">2</span>
+            <h4>Monte a rota</h4>
+            <p>Motorista e monitor organizam o trajeto e os alunos do dia.</p>
+        </div>
+        <div class="step reveal">
+            <span class="step-number">3</span>
+            <h4>Acompanhe ao vivo</h4>
+            <p>O responsável vê o veículo se movendo no mapa em tempo real.</p>
+        </div>
+        <div class="step reveal">
+            <span class="step-number">4</span>
+            <h4>Receba a confirmação</h4>
+            <p>Notificações avisam o embarque e o desembarque com segurança.</p>
         </div>
     </div>
+</section>
 
-    
-    <div id="home" class="fundo">
-        <div>
-            <h1>Rota Segura</h1>
-            <p>Presente em cada trajeto</p>
+<!-- ===== BENEFÍCIOS ===== -->
+<section class="section section-dark">
+    <span class="eyebrow">Por que usar o Rota Segura</span>
+    <h2>Mais tranquilidade em cada trajeto</h2>
+
+    <div class="beneficios-grid">
+        <div class="beneficio reveal">
+            <h4>Em tempo real</h4>
+            <p>Sem mensagens perdidas: acompanhe o trajeto ao vivo, do início ao fim.</p>
+        </div>
+        <div class="beneficio reveal">
+            <h4>Sempre conectado</h4>
+            <p>Responsável, motorista e monitor falando a mesma língua, no mesmo app.</p>
+        </div>
+        <div class="beneficio reveal">
+            <h4>Simples de usar</h4>
+            <p>Interface pensada para o dia a dia corrido de quem cuida das crianças.</p>
+        </div>
+        <div class="beneficio reveal">
+            <h4>Dados protegidos</h4>
+            <p>Informações de alunos e rotas guardadas com segurança.</p>
         </div>
     </div>
+</section>
 
-    
-    <div id="quem" class="secao">
-        <h2>Quem Somos</h2>
-        <p>Somos um sistema que ajuda famílias a monitorar o transporte escolar</p>
-        <p>dos seus filhos com mais segurança e amparo.</p>
-        <br>
-        <p><strong>Missão:</strong> Garantir segurança no trajeto escolar.</p>
-        <p><strong>Visão:</strong> Ser referência em tecnologia para transporte escolar.</p>
-        <p><strong>Valores:</strong> Segurança, transparência e inovação.</p>
+<!-- ===== CTA FINAL ===== -->
+<section class="section section-cta reveal">
+    <h2>Pronto para deixar o trajeto mais seguro?</h2>
+    <p>Crie sua conta gratuitamente e comece a acompanhar as viagens ainda hoje.</p>
+    <div class="cta-buttons">
+        <a href="criarconta.html" class="btn-primary">Criar conta grátis</a>
+        <a href="login.html" class="btn-secondary">Já tenho conta</a>
     </div>
+</section>
 
-    
-    <div id="func" class="secao">
-        <h2>Funcionalidades</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>👪 Responsável</h3>
-                <ul>
-                    <li>Ver Rota</li>
-                    <li>Notificações</li>
-                    <li>Cadastrar Dependente</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>🚛 Motorista</h3>
-                <ul>
-                    <li>Criar Rota</li>
-                    <li>Ver Alunos</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>📱 Monitor</h3>
-                <ul>
-                    <li>Atualizar Status</li>
-                    <li>Notificar</li>
-                </ul>
-            </div>
-        </div>
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+    <div class="footer-brand">
+        <span class="logo-badge logo-badge--sm">
+            <img src="img/logo.svg" alt="logo">
+        </span>
+        <span>Rota Segura</span>
     </div>
+    <p class="footer-tagline">Presente em cada trajeto.</p>
+    <nav class="footer-links">
+        <a href="rotasegura.html">Início</a>
+        <a href="login.html">Entrar</a>
+        <a href="criarconta.html">Criar conta</a>
+    </nav>
+    <p class="footer-copy">&copy; 2026 Rota Segura. Projeto acadêmico.</p>
+</footer>
 
-
-    <div class="rodape">
-        <p>Projeto Rota Segura </p>
-    </div>
+<script>
+// Anima elementos com a classe .reveal quando entram na tela
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+revealEls.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>

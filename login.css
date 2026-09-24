@@ -1,88 +1,305 @@
+/* ===== Reset básico ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    --azul-escuro: #0b1d60;
+    --azul-escuro2: #0a1a54;
+    --laranja: #ff8300;
+    --laranja-hover: #ff9a2e;
+    --branco: #ffffff;
+    --texto-claro: #c7cbe0;
+}
+
 body {
-    background: linear-gradient(135deg, #050d33, #18295e);
     font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at 15% 10%, #12237a 0%, var(--azul-escuro) 45%, var(--azul-escuro2) 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    color: var(--branco);
+    overflow-x: hidden;
 }
 
+/* pontinhos decorativos, como no Figma */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(2px 2px at 10% 15%, rgba(255,131,0,0.55) 50%, transparent 51%),
+        radial-gradient(2px 2px at 85% 8%, rgba(255,255,255,0.4) 50%, transparent 51%),
+        radial-gradient(2px 2px at 92% 40%, rgba(255,131,0,0.4) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 6% 70%, rgba(255,255,255,0.3) 50%, transparent 51%),
+        radial-gradient(2px 2px at 30% 88%, rgba(255,131,0,0.45) 50%, transparent 51%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ===== Container principal ===== */
 .login-container {
-    background: linear-gradient(135deg, #0f247e, #18295e);
-    padding: 40px;
-    border-radius: 20px;
-    width: 400px;
-    border: 1px solid rgba(255,255,255,0.2);
-    backdrop-filter: blur(10px);
-    overflow: hidden;
-     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    min-height: 100vh;
+    padding: 28px 32px 48px;
+    display: flex;
+    flex-direction: column;
 }
 
+/* ===== Barra superior ===== */
+.top-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    animation: fadeSlideDown 0.6s ease both;
+}
+
+.back-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--branco);
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: var(--branco);
+    transform: translateX(-3px);
+}
+
+.top-bar-title {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.3px;
+}
+
+/* ===== Título "Entrar" ===== */
 .logo {
-    text-align: center;
-    margin-bottom: 30px;
+    margin-top: 48px;
+    animation: fadeSlideUp 0.65s ease 0.1s both;
 }
 
 .logo h1 {
-    color: orange;
-    font-size: 32px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    font-size: 2.6rem;
+    line-height: 1.1;
 }
 
-.logo p {
-    color: white;
-    font-size: 14px;
+/* ===== Formulário ===== */
+form {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
 }
+
+.field {
+    animation: fadeSlideUp 0.6s ease both;
+}
+
+.field:nth-of-type(1) { animation-delay: 0.18s; }
+.field:nth-of-type(2) { animation-delay: 0.26s; }
 
 input {
     width: 100%;
-    padding: 12px;
-    margin: 10px 0;
+    padding: 18px 20px;
+    margin-bottom: 18px;
     border: none;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.1);
-    color: white;
-    font-size: 14px;
+    border-radius: 16px;
+    background: var(--branco);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    color: #1a1a2e;
+    outline: 2px solid transparent;
+    transition: outline-color 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
 }
 
 input::placeholder {
-    color: #888;
+    color: #9a9db0;
 }
 
-button {
-    width: 100%;
-    padding: 12px;
-    background: orange;
-    color: black;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 20px;
+input:focus {
+    outline-color: var(--laranja);
+    box-shadow: 0 6px 18px rgba(255,131,0,0.25);
+    transform: translateY(-1px);
 }
 
-button:hover {
-    background: #c94f1f;
-}
-
-.links {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.links a {
-    color: #ffcc00;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 14px;
-}
-
-.links a:hover {
+.forgot-link {
+    align-self: flex-end;
+    color: var(--branco);
+    font-size: 0.85rem;
     text-decoration: underline;
+    opacity: 0.9;
+    margin-bottom: 34px;
+    animation: fadeSlideUp 0.6s ease 0.32s both;
+    transition: opacity 0.2s ease;
+}
+
+.forgot-link:hover {
+    opacity: 1;
+}
+
+button[type="submit"] {
+    background: linear-gradient(180deg, #ff9a2e 0%, var(--laranja) 100%);
+    color: #1a1330;
+    border: none;
+    padding: 17px;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(255,131,0,0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    animation: fadeSlideUp 0.6s ease 0.4s both;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(255,131,0,0.45);
+    filter: brightness(1.04);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 6px 14px rgba(255,131,0,0.35);
+}
+
+/* ===== Divisor "ou continuar com" ===== */
+.divider {
+    text-align: center;
+    color: var(--texto-claro);
+    font-size: 0.9rem;
+    margin-top: 30px;
+    animation: fadeIn 0.6s ease 0.5s both;
+}
+
+.social-row {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    margin-top: 18px;
+    animation: fadeIn 0.6s ease 0.58s both;
+}
+
+.social-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1.5px solid var(--laranja);
+    background: transparent;
+    color: var(--laranja);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.2s ease, color 0.25s ease;
+}
+
+.social-btn:hover {
+    background: var(--laranja);
+    color: var(--azul-escuro);
+    transform: translateY(-3px);
+}
+
+/* ===== Rodapé ===== */
+.signup-text {
+    margin-top: auto;
+    padding-top: 36px;
+    text-align: center;
+    color: var(--texto-claro);
+    font-size: 0.9rem;
+    animation: fadeIn 0.6s ease 0.66s both;
+}
+
+.signup-text a {
+    color: var(--laranja);
+    font-weight: 600;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.signup-text a:hover {
+    color: var(--laranja-hover);
+}
+
+/* ===== Animações ===== */
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+}
+
+/* ===== Responsividade ===== */
+
+/* Tablets */
+@media (min-width: 600px) {
+    .login-container {
+        min-height: auto;
+        margin: 48px auto;
+        border-radius: 28px;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+        padding: 36px 44px 44px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    body {
+        align-items: center;
+        padding: 40px 0;
+    }
+
+    .login-container {
+        max-width: 460px;
+        margin: 0 auto;
+    }
+
+    .logo h1 {
+        font-size: 2.9rem;
+    }
+
+    button[type="submit"]:hover {
+        transform: translateY(-3px) scale(1.01);
+    }
+}
+
+/* Telas pequenas (< 360px) */
+@media (max-width: 360px) {
+    .login-container {
+        padding: 22px 22px 36px;
+    }
+
+    .logo h1 {
+        font-size: 2.2rem;
+    }
 }

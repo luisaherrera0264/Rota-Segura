@@ -2,24 +2,73 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rota Segura - Monitor</title>
+    <link rel="icon" type="image/svg+xml" href="img/logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="monitor.css">
 </head>
 <body>
 
 <div class="container">
-    <div class="titulo">
-        <h1>🚍 Rota Segura</h1>
-        <p>Painel do Monitor</p>
-    </div>
+
+    <header class="dash-header">
+        <div class="dash-header-top">
+            <a href="login.html" class="back-btn" aria-label="Sair para o login">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+            </a>
+            <span class="dash-header-brand">🚍 Rota Segura</span>
+            <a href="conta.html" class="profile-btn" aria-label="Minha conta">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/>
+                </svg>
+            </a>
+        </div>
+
+        <div class="titulo">
+            <h1>Painel do Monitor</h1>
+            <p>Acompanhe alunos, rotas e ocorrências do dia</p>
+        </div>
+    </header>
 
     <div class="card">
+
         <div class="menu">
-            <button onclick="mudarTela('alunos')">Alunos por Rota</button>
-            <button onclick="mudarTela('imprevistos')"> Notificar Imprevisto</button>
-            <button onclick="mudarTela('ausencias')"> Ausências Autorizadas</button>
-            <button onclick="mudarTela('historico')"> Histórico do Dia</button>
-            <button onclick="sair()" class="btn-sair"> Sair</button>
+            <div class="menu-grid">
+                <button onclick="mudarTela('alunos')" class="menu-btn" data-tela="alunos">
+                    <span class="menu-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.3 3.1-6 7-6s7 2.7 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.2c2.9.5 5.5 2.5 5.5 5.8"/></svg>
+                    </span>
+                    Alunos por Rota
+                </button>
+                <button onclick="mudarTela('imprevistos')" class="menu-btn" data-tela="imprevistos">
+                    <span class="menu-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/></svg>
+                    </span>
+                    Notificar Imprevisto
+                </button>
+                <button onclick="mudarTela('ausencias')" class="menu-btn" data-tela="ausencias">
+                    <span class="menu-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16M9 15l2 2 4-4"/></svg>
+                    </span>
+                    Ausências Autorizadas
+                </button>
+                <button onclick="mudarTela('historico')" class="menu-btn" data-tela="historico">
+                    <span class="menu-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20V10M12 20V4M18 20v-7"/></svg>
+                    </span>
+                    Histórico do Dia
+                </button>
+            </div>
+            <button onclick="sair()" class="btn-sair">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
+                Sair
+            </button>
         </div>
 
         <!-- Tela Alunos por Rota -->
@@ -34,7 +83,7 @@
                 </select>
             </div>
             <div id="listaAlunos" class="lista"></div>
-            <button onclick="salvarPresenca()" class="btn-primary" style="margin-top: 15px;"> Salvar Presença</button>
+            <button onclick="salvarPresenca()" class="btn-primary" style="margin-top: 15px;">Salvar Presença</button>
             <div id="msgPresenca" class="feedback"></div>
         </div>
 
@@ -67,7 +116,7 @@
             </div>
             <div class="form-group">
                 <label>Descrição Detalhada:</label>
-                <textarea id="descImprevisto" rows="4" placeholder="Descreva o ocorrido em detalhes..." style="width:100%; padding:10px; border-radius:8px;"></textarea>
+                <textarea id="descImprevisto" rows="4" placeholder="Descreva o ocorrido em detalhes..."></textarea>
             </div>
             <button onclick="registrarImprevisto()" class="btn-primary">Registrar Imprevisto</button>
             <div id="msgImprevisto" class="feedback"></div>
@@ -83,7 +132,7 @@
                         <small>15/03/2024</small>
                     </div>
                     <div>Motivo: Problemas de saúde - Consulta médica</div>
-                    <div style="margin-top:5px; color:orange;"> Status: Ausência autorizada</div>
+                    <div class="status-tag">Status: Ausência autorizada</div>
                 </div>
                 <div class="notificacao">
                     <div style="display:flex; justify-content:space-between;">
@@ -91,14 +140,14 @@
                         <small>16/03/2024</small>
                     </div>
                     <div>Motivo: Compromissos pessoais - Viagem</div>
-                    <div style="margin-top:5px; color:orange;">Status: Ausência autorizada</div>
+                    <div class="status-tag">Status: Ausência autorizada</div>
                 </div>
             </div>
         </div>
 
         <!-- Tela Histórico do Dia -->
         <div id="telaHistorico" class="conteudo esconder">
-            <h2> Histórico do Dia</h2>
+            <h2>Histórico do Dia</h2>
             <div id="listaHistorico" class="lista">
                 <div class="notificacao">
                     <div style="display:flex; justify-content:space-between;">
@@ -326,6 +375,17 @@
     window.salvarPresenca = salvarPresenca;
     window.registrarImprevisto = registrarImprevisto;
     window.atualizarHistorico = atualizarHistorico;
+</script>
+
+<!-- Progressive enhancement: apenas destaca o botão da aba ativa no menu (não interfere na lógica acima) -->
+<script>
+    document.querySelectorAll('.menu-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.menu-btn').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+        });
+    });
+    document.querySelector('.menu-btn[data-tela="alunos"]').classList.add('active');
 </script>
 
 </body>

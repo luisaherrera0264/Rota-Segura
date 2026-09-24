@@ -2,26 +2,73 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rota Segura - Motorista</title>
+    <link rel="icon" type="image/svg+xml" href="img/logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="motorista.css">
-    
-
 </head>
 <body>
 
 <div class="container">
-    <div class="titulo">
-        <h1>🚍 Rota Segura</h1>
-        <p>Painel do Motorista</p>
-    </div>
+
+    <header class="dash-header">
+        <div class="dash-header-top">
+            <a href="login.html" class="back-btn" aria-label="Sair para o login">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+            </a>
+            <span class="dash-header-brand">🚍 Rota Segura</span>
+            <a href="conta.html" class="profile-btn" aria-label="Minha conta">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/>
+                </svg>
+            </a>
+        </div>
+
+        <div class="titulo">
+            <h1>Painel do Motorista</h1>
+            <p>Gerencie seu veículo e suas rotas</p>
+        </div>
+    </header>
 
     <div class="card">
+
         <div class="menu">
-            <button onclick="mudarTela('veiculo')">Cadastrar Veículo</button>
-            <button onclick="mudarTela('visualizarVeiculo')">Meu Veículo</button>
-            <button onclick="mudarTela('rotas')">Cadastrar Rota</button>
-            <button onclick="mudarTela('visualizarRotas')">Minhas Rotas</button>
-            <button onclick="sair()" class="btn-sair">Sair</button>
+            <div class="menu-grid">
+                <button onclick="mudarTela('veiculo')" class="menu-btn" data-tela="veiculo">
+                    <span class="menu-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="14" height="7" rx="1.5"/><path d="M17 12h2.4a1 1 0 0 1 .9.55L21.5 15v2H17"/><circle cx="7.5" cy="18.5" r="1.6"/><circle cx="16.5" cy="18.5" r="1.6"/><path d="M9 7h4"/></svg>
+                    </span>
+                    Cadastrar Veículo
+                </button>
+                <button onclick="mudarTela('visualizarVeiculo')" class="menu-btn" data-tela="visualizarVeiculo">
+                    <span class="menu-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="14" height="7" rx="1.5"/><path d="M17 12h2.4a1 1 0 0 1 .9.55L21.5 15v2H17"/><circle cx="7.5" cy="18.5" r="1.6"/><circle cx="16.5" cy="18.5" r="1.6"/></svg>
+                    </span>
+                    Meu Veículo
+                </button>
+                <button onclick="mudarTela('rotas')" class="menu-btn" data-tela="rotas">
+                    <span class="menu-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.4-7-11a7 7 0 0 1 14 0c0 5.6-7 11-7 11z"/><path d="M9.5 10.5 11.2 12.2 14.8 8.6"/></svg>
+                    </span>
+                    Cadastrar Rota
+                </button>
+                <button onclick="mudarTela('visualizarRotas')" class="menu-btn" data-tela="visualizarRotas">
+                    <span class="menu-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="18" r="2.2"/><path d="M8 6h8a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3H8a3 3 0 0 0-3 3v0a3 3 0 0 0 3 3"/></svg>
+                    </span>
+                    Minhas Rotas
+                </button>
+            </div>
+            <button onclick="sair()" class="btn-sair">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
+                Sair
+            </button>
         </div>
 
         <!-- Tela Cadastrar Veículo -->
@@ -52,7 +99,7 @@
                     <label>Cor:</label>
                     <input type="text" id="cor" placeholder="Ex: Branca">
                 </div>
-                <button type="submit" class="btn-primary"> Salvar Veículo</button>
+                <button type="submit" class="btn-primary">Salvar Veículo</button>
             </form>
             <div id="msgVeiculo" class="feedback"></div>
         </div>
@@ -60,7 +107,7 @@
         <!-- Tela Meu Veículo-->
         <div id="telaVisualizarVeiculo" class="conteudo esconder">
             <h2>Meu Veículo</h2>
-            <div id="infoVeiculo" class="rota-box" style="text-align: left;">
+            <div id="infoVeiculo" class="veiculo-card">
                 <!-- Veículo demonstrativo fixo -->
                 <p><strong>Marca:</strong> Mercedes-Benz</p>
                 <p><strong>Modelo:</strong> Sprinter</p>
@@ -93,7 +140,7 @@
                 </div>
                 <div class="form-group">
                     <label>Alunos (separar por vírgula):</label>
-                    <textarea id="alunosRota" rows="3" placeholder="Ex: Agatha Moreira, Fellipe Augusto, Sabrina Gonçalves" style="width:100%; padding:10px; border-radius:8px;"></textarea>
+                    <textarea id="alunosRota" rows="3" placeholder="Ex: Agatha Moreira, Fellipe Augusto, Sabrina Gonçalves"></textarea>
                 </div>
                 <button type="submit" class="btn-primary">Salvar Rota</button>
             </form>
@@ -105,28 +152,28 @@
             <h2>Minhas Rotas</h2>
             <div id="listaRotas" class="lista">
                 <!-- Rotas demonstrativas fixas -->
-                <div class="item-dep" style="flex-direction:column; align-items:flex-start;">
+                <div class="item-dep rota-card" style="flex-direction:column; align-items:flex-start;">
                     <div style="display:flex; justify-content:space-between; width:100%;">
                         <span class="nome">Rota Sul</span>
-                        <span>07:00 - 17:00</span>
+                        <span class="horario-tag">07:00 - 17:00</span>
                     </div>
-                    <div style="margin-top:5px;">📍 Partida: Rua das Flores, 123</div>
-                    <div style="margin-bottom:5px;">📍 Destino: Escola Municipal</div>
+                    <div class="endereco">📍 Partida: Rua das Flores, 123</div>
+                    <div class="endereco">📍 Destino: Escola Municipal</div>
                     <div style="margin-top:10px;">
-                        <strong> Alunos:</strong>
-                        <div style="margin-top:5px;">Agatha Moreira, Fellipe Augusto, Sabrina Gonçalves</div>
+                        <strong>Alunos:</strong>
+                        <div class="alunos-lista">Agatha Moreira, Fellipe Augusto, Sabrina Gonçalves</div>
                     </div>
                 </div>
-                <div class="item-dep" style="flex-direction:column; align-items:flex-start;">
+                <div class="item-dep rota-card" style="flex-direction:column; align-items:flex-start;">
                     <div style="display:flex; justify-content:space-between; width:100%;">
                         <span class="nome">Rota Norte</span>
-                        <span>07:30 - 16:30</span>
+                        <span class="horario-tag">07:30 - 16:30</span>
                     </div>
-                    <div style="margin-top:5px;">📍 Partida: Av. Principal, 456</div>
-                    <div style="margin-bottom:5px;">📍 Destino: Colégio Estadual</div>
+                    <div class="endereco">📍 Partida: Av. Principal, 456</div>
+                    <div class="endereco">📍 Destino: Colégio Estadual</div>
                     <div style="margin-top:10px;">
-                        <strong> Alunos:</strong>
-                        <div style="margin-top:5px;">Henrique Ribeiro, Luísa Herrera</div>
+                        <strong>Alunos:</strong>
+                        <div class="alunos-lista">Henrique Ribeiro, Luísa Herrera</div>
                     </div>
                 </div>
             </div>
@@ -167,28 +214,28 @@
         
         // Rotas fixas de exemplo
         let html = `
-            <div class="item-dep" style="flex-direction:column; align-items:flex-start;">
+            <div class="item-dep rota-card" style="flex-direction:column; align-items:flex-start;">
                 <div style="display:flex; justify-content:space-between; width:100%;">
                     <span class="nome"> Rota Sul</span>
-                    <span>07:00 - 17:00</span>
+                    <span class="horario-tag">07:00 - 17:00</span>
                 </div>
-                <div style="margin-top:5px;">📍 Partida: Rua das Flores, 123</div>
-                <div style="margin-bottom:5px;">📍 Destino: Escola Municipal</div>
+                <div class="endereco">📍 Partida: Rua das Flores, 123</div>
+                <div class="endereco">📍 Destino: Escola Municipal</div>
                 <div style="margin-top:10px;">
                     <strong>Alunos:</strong>
-                    <div style="margin-top:5px;">Agatha Moreira, Fellipe Augusto, Sabrina Gonçalves</div>
+                    <div class="alunos-lista">Agatha Moreira, Fellipe Augusto, Sabrina Gonçalves</div>
                 </div>
             </div>
-            <div class="item-dep" style="flex-direction:column; align-items:flex-start;">
+            <div class="item-dep rota-card" style="flex-direction:column; align-items:flex-start;">
                 <div style="display:flex; justify-content:space-between; width:100%;">
                     <span class="nome">Rota Norte</span>
-                    <span>07:30 - 16:30</span>
+                    <span class="horario-tag">07:30 - 16:30</span>
                 </div>
-                <div style="margin-top:5px;">📍 Partida: Av. Principal, 456</div>
-                <div style="margin-bottom:5px;">📍 Destino: Colégio Estadual</div>
+                <div class="endereco">📍 Partida: Av. Principal, 456</div>
+                <div class="endereco">📍 Destino: Colégio Estadual</div>
                 <div style="margin-top:10px;">
                     <strong>Alunos:</strong>
-                    <div style="margin-top:5px;">Henrique Ribeiro, Luísa Herrera</div>
+                    <div class="alunos-lista">Henrique Ribeiro, Luísa Herrera</div>
                 </div>
             </div>
         `;
@@ -198,16 +245,16 @@
             for(let i = 0; i < rotas.length; i++) {
                 let rota = rotas[i];
                 html += `
-                    <div class="item-dep" style="flex-direction:column; align-items:flex-start;">
+                    <div class="item-dep rota-card" style="flex-direction:column; align-items:flex-start;">
                         <div style="display:flex; justify-content:space-between; width:100%;">
                             <span class="nome"> ${rota.nome}</span>
-                            <span> ${rota.horario}</span>
+                            <span class="horario-tag"> ${rota.horario}</span>
                         </div>
-                        <div style="margin-top:5px;">📍 Partida: ${rota.partida}</div>
-                        <div style="margin-bottom:5px;">📍 Destino: ${rota.destino}</div>
+                        <div class="endereco">📍 Partida: ${rota.partida}</div>
+                        <div class="endereco">📍 Destino: ${rota.destino}</div>
                         <div style="margin-top:10px;">
                             <strong>Alunos:</strong>
-                            <div style="margin-top:5px;">${rota.alunos}</div>
+                            <div class="alunos-lista">${rota.alunos}</div>
                         </div>
                     </div>
                 `;
@@ -327,6 +374,17 @@
 
     // Começa na tela do veículo
     mudarTela('visualizarVeiculo');
+</script>
+
+<!-- Progressive enhancement: apenas destaca o botão da aba ativa no menu (não interfere na lógica acima) -->
+<script>
+    document.querySelectorAll('.menu-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.menu-btn').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+        });
+    });
+    document.querySelector('.menu-btn[data-tela="visualizarVeiculo"]').classList.add('active');
 </script>
 
 </body>
