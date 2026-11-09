@@ -1,0 +1,23 @@
+{
+    "responsaveis": [
+        {
+            "email": "oi@gmail.com",
+            "senha": "1234",
+            "tipo": "responsavel"
+        }
+    ],
+    "monitores": [
+        {
+            "email": "monitor@email.com",
+            "senha": "123",
+            "tipo": "monitor"
+        }
+    ],
+    "motoristas": [
+        {
+            "email": "motorista@email.com",
+            "senha": "123",
+            "tipo": "motorista"
+        }
+    ]
+}

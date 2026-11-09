@@ -1,114 +1,51 @@
 <?php
-
 session_start();
+$jsonFile = 'usuarios.json';
 
-include("conexao.php");
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = trim($_POST['email'] ?? '');
+    $senha = $_POST['senha'] ?? '';
+    $tipo = $_POST['tipo'] ?? ''; // 'responsavel', 'monitor' ou 'motorista'
 
-$email = $_POST["email"];
-$senha = $_POST["senha"];
-
-$encontrou = false;
-
-
-/* =========================
-   VERIFICAR RESPONSÁVEL
-   ========================= */
-
-$sql = "SELECT idResponsavel, Nome, Email, Senha
-        FROM Responsaveis
-        WHERE Email = '$email'";
-
-$resultado = $conexao->query($sql);
-
-if ($resultado->num_rows > 0) {
-
-    $usuario = $resultado->fetch_assoc();
-
-    if (password_verify($senha, $usuario["Senha"])) {
-
-        $_SESSION["id"] = $usuario["idResponsavel"];
-        $_SESSION["nome"] = $usuario["Nome"];
-        $_SESSION["email"] = $usuario["Email"];
-        $_SESSION["tipo"] = "responsavel";
-
-        header("Location: responsavel.html");
+    if (!file_exists($jsonFile)) {
+        echo "<script>alert('Base de dados JSON não encontrada!'); window.location='login.html';</script>";
         exit;
     }
 
-    $encontrou = true;
-}
+    $jsonData = json_decode(file_get_contents($jsonFile), true);
+    
+    // Mapeia a chave conforme o tipo selecionado
+    $chaveArr = '';
+    if ($tipo == 'responsavel') $chaveArr = 'responsaveis';
+    elseif ($tipo == 'monitor') $chaveArr = 'monitores';
+    elseif ($tipo == 'motorista') $chaveArr = 'motoristas';
 
+    $autenticado = false;
 
-/* =========================
-   VERIFICAR MOTORISTA
-   ========================= */
-
-$sql = "SELECT idMotorista, Nome, Email, Senha
-        FROM Motoristas
-        WHERE Email = '$email'";
-
-$resultado = $conexao->query($sql);
-
-if ($resultado->num_rows > 0) {
-
-    $usuario = $resultado->fetch_assoc();
-
-    if (password_verify($senha, $usuario["Senha"])) {
-
-        $_SESSION["id"] = $usuario["idMotorista"];
-        $_SESSION["nome"] = $usuario["Nome"];
-        $_SESSION["email"] = $usuario["Email"];
-        $_SESSION["tipo"] = "motorista";
-
-        header("Location: motorista.html");
-        exit;
+    if (!empty($chaveArr) && isset($jsonData[$chaveArr])) {
+        foreach ($jsonData[$chaveArr] as $usuario) {
+            if (trim($usuario['email']) === $email && $usuario['senha'] === $senha) {
+                $autenticado = true;
+                break;
+            }
+        }
     }
 
-    $encontrou = true;
-}
+    if ($autenticado) {
+        $_SESSION['email'] = $email;
+        $_SESSION['tipo'] = $tipo;
 
-
-/* =========================
-   VERIFICAR MONITOR
-   ========================= */
-
-$sql = "SELECT idMonitor, Nome, Email, Senha
-        FROM Monitores
-        WHERE Email = '$email'";
-
-$resultado = $conexao->query($sql);
-
-if ($resultado->num_rows > 0) {
-
-    $usuario = $resultado->fetch_assoc();
-
-    if (password_verify($senha, $usuario["Senha"])) {
-
-        $_SESSION["id"] = $usuario["idMonitor"];
-        $_SESSION["nome"] = $usuario["Nome"];
-        $_SESSION["email"] = $usuario["Email"];
-        $_SESSION["tipo"] = "monitor";
-
-        header("Location: monitor.html");
+        // Redireciona para a página correspondente ao perfil
+        if ($tipo == 'responsavel') {
+            header("Location: responsavel.html");
+        } elseif ($tipo == 'monitor') {
+            header("Location: monitor.html");
+        } elseif ($tipo == 'motorista') {
+            header("Location: motorista.html");
+        }
         exit;
+    } else {
+        echo "<script>alert('E-mail, senha ou perfil incorretos!'); window.history.back();</script>";
     }
-
-    $encontrou = true;
 }
-
-
-/* =========================
-   LOGIN INCORRETO
-   ========================= */
-
-echo "<script>";
-
-echo "alert('Usuário ou senha incorretos!');";
-
-echo "window.location.href = 'login.html';";
-
-echo "</script>";
-
-$conexao->close();
-
 ?>

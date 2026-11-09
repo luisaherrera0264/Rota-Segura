@@ -28,15 +28,25 @@
         <h1>Entrar</h1>
     </div>
 
-    <form id="loginForm">
+    <!-- Apontando o action diretamente para o nosso processador PHP com JSON -->
+    <form action="login.php" method="POST">
         <div class="field">
-            <input type="text" id="usuario" placeholder="Email" autocomplete="username" required>
+            <input type="email" name="email" placeholder="Email" autocomplete="username" required>
         </div>
         <div class="field">
-            <input type="password" id="senha" placeholder="Senha" autocomplete="current-password" required>
+            <input type="password" name="senha" placeholder="Senha" autocomplete="current-password" required>
         </div>
 
-        <a href="#" class="forgot-link">Esqueci minha senha</a>
+        <div class="field" style="margin-bottom: 15px;">
+            <select name="tipo" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-family: 'Poppins', sans-serif;">
+                <option value="" disabled selected>Selecione o Perfil</option>
+                <option value="responsavel">Responsável</option>
+                <option value="monitor">Monitor</option>
+                <option value="motorista">Motorista</option>
+            </select>
+        </div>
+
+        <a href="esquecisenha.html" class="forgot-link">Esqueci minha senha</a>
 
         <button type="submit">Entrar</button>
     </form>
@@ -61,31 +71,6 @@
     <p class="signup-text">Não possui uma conta? <a href="criarconta.html">Cadastre-se</a></p>
 
 </div>
-
-<script>
-document.getElementById('loginForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    var usuario = document.getElementById('usuario').value;
-    var senha = document.getElementById('senha').value;
-
-    // Conta de Responsável
-    if(usuario === "responsavel" && senha === "123") {
-        window.location.href = "responsavel.html";
-    }
-    // Conta de Motorista
-    else if(usuario === "motorista" && senha === "123") {
-        window.location.href = "motorista.html";
-    }
-    // Conta de Monitor
-    else if(usuario === "monitor" && senha === "123") {
-        window.location.href = "monitor.html";
-    }
-    else {
-        alert("❌ Usuário ou senha incorretos!");
-    }
-});
-</script>
 
 </body>
 </html>
